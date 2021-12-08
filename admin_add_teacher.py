@@ -85,20 +85,44 @@ def add_teacher_to_database():
 
 
 def fetch_data():
-    connection = mysql.connector.connect(host=db_host,
-                                         username=db_username,
-                                         password=db_password,
-                                         database=db_database)
-    cursor = connection.cursor()
-    cursor.execute("select * from " + db_teacher_table)
-    data = cursor.fetchall()
-    if len(data) != 0:
-        cursor.execute("select teacher_id from " + db_teacher_table + " where teacher_id=" + str(100000 + len(data)))
+    try:
+        connection = mysql.connector.connect(host=db_host,
+                                             username=db_username,
+                                             password=db_password,
+                                             database=db_database)
+        cursor = connection.cursor()
+        cursor.execute("select * from " + db_teacher_table)
         data = cursor.fetchall()
-        entry_1.insert(0, data[0][0] + 1)
-    elif len(data) == 0:
-        entry_1.insert(0, str(100000 + 1))
-    connection.close()
+        if len(data) != 0:
+            cursor.execute(
+                "select teacher_id from " + db_teacher_table + " where teacher_id=" + str(100000 + len(data)))
+            data = cursor.fetchall()
+            entry_1.insert(0, data[0][0] + 1)
+        elif len(data) == 0:
+            entry_1.insert(0, str(100000 + 1))
+        connection.close()
+    except Exception as es:
+        messagebox.showerror("Error", f"Due To:{str(es)}", parent=window)
+
+
+def get_all_available_course():
+    try:
+        connection = mysql.connector.connect(host=db_host,
+                                             username=db_username,
+                                             password=db_password,
+                                             database=db_database)
+        cursor = connection.cursor()
+        cursor.execute("select course_name from " + db_course_table + " where mentor='Not assigned yet'")
+        data = cursor.fetchall()
+
+        course_list = ["Not assigned yet"]
+        for d in data:
+            course_list.append(d[0])
+
+        connection.close()
+        return tuple(course_list)
+    except Exception as es:
+        messagebox.showerror("Error", f"Due To:{str(es)}", parent=window)
 
 
 window = Tk()
@@ -122,6 +146,7 @@ db_username = all_credentials.username
 db_password = all_credentials.password
 db_database = all_credentials.database
 db_teacher_table = all_credentials.teacher_table_name
+db_course_table = all_credentials.course_table_name
 
 window.geometry("720x700")
 window.configure(bg="#FFFFFF")
@@ -154,7 +179,6 @@ canvas.create_text(
     fill="#000000",
     font=("Roboto", 14 * -1)
 )
-
 
 image_image_1 = PhotoImage(
     file=relative_to_assets("image_add_teacher_form_background.png"))
@@ -262,7 +286,6 @@ canvas.create_text(
     fill="#000000",
     font=("Roboto", 14 * -1)
 )
-
 
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_admin_add_teacher_textbox.png"))
@@ -479,9 +502,7 @@ course_combo = ttk.Combobox(window,
                             textvariable=course_mentor,
                             font=("arial", 10),
                             width=20, state="readonly")
-course_combo["value"] = ("Select Course",
-                         "Course 1",
-                         "Course 2")
+course_combo["value"] = get_all_available_course()
 course_combo.current(0)
 course_combo.place(
     x=380.0,
