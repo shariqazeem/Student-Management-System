@@ -16,17 +16,17 @@ def add_teacher():
 
 
 def update_teacher_data():
-    print("update teacher")
+    os.system('python admin_update_teacher.py')
     pass
 
 
 def remove_teacher():
-    print("remove teacher")
+    os.system('python admin_remove_teacher.py')
     pass
 
 
 def show_all_teacher():
-    print("show all teacher")
+    os.system('python admin_show_all_teachers.py')
     pass
 
 

@@ -26,7 +26,6 @@ def disable_update_form():
 def enable_update_form():
     button_2["state"] = "normal"
     course_combo["state"] = "normal"
-    #entry_2["state"] = "normal"
     entry_3["state"] = "normal"
     entry_4["state"] = "normal"
     entry_5["state"] = "normal"
