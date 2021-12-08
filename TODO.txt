@@ -1,0 +1,286 @@
+Front Screen
+    1. Admin Login
+    2. Teacher Login
+    3. Student Login
+
+Table Require
+    1. Teachers
+        - teacher_id (primary key)
+        - teacher_name
+        - email_address
+        - mobile_number
+        - teaching_subject
+        - course_mentor
+        - salary_monthly
+        - qualification
+        - gender
+        - age
+        - address
+
+    2. Students
+        - student_id (primary key)
+        - student_name
+        - email_address
+        - mobile_number
+        - course_selected
+        - total_fee
+        - fee_paid
+        - fee_outstanding
+        - attendance (0)
+        - total_assignment_points (0)
+        - final exam points (0)
+        - gender
+        - age
+        - address
+
+    3. Courses
+        - course_id
+        - course_name
+        - duration
+        - classes
+        - total_fee
+        - mentor
+
+    4. Student Payment Statements
+        - student_id (primary key)
+        - student_name
+        - course_id
+        - course_name
+        - total_fee
+        - total_fee_paid
+        - total_fee_outstanding
+        - current_fee_payment
+
+    5. Notice Board
+        - notice_id
+        - notice_subject
+        - notice_body
+        - submit_by
+        - submit_date_time
+
+    6. Attendance
+        - student_id
+        - student_name
+        - class_no
+        - is_present
+
+    7. Assignments
+        - assignment_id
+        - student_id
+        - assignment_pdf_url
+        - assignment_date
+        - assignment_marks
+
+    8. Final Exam
+        - exam_id
+        - student_id
+        - question_pdf_url
+        - answer_pdf_url
+        - date
+        - marks
+
+
+1. Admin
+    1. Add Teacher
+        - Teacher_ID
+        - Teacher name
+        - Email Address
+        - Phone Number
+        - Teaching Subject
+        - Course Mentor
+        - Salary monthly
+        - Qualification
+        - Gender
+        - Age
+        - Address
+        ---------------------
+       Update Teacher
+        - Teacher_ID (search)
+        - Teacher name
+        - Email Address
+        - Phone Number
+        - Teaching Subject
+        - Course Mentor
+        - Salary monthly
+        - Gender
+        - Age
+        - Address
+        ---------------------
+       Delete Teacher
+        - Teacher_ID
+        - show Teacher Name and Subject
+        ---------------------
+       Show All Teacher
+
+    2. Add Student
+        - Student_ID
+        - Student Name
+        - Email Address
+        - Phone Number
+        - Age
+        - Gender
+        - Address
+        - Course Selected
+       ---------------------
+       Update Student
+        - Student_ID
+        - Student Name
+        - Email Address
+        - Phone Number
+        - Age
+        - Gender
+        - Address
+        - Course Selected (not changeable)
+       ---------------------
+       Delete Student
+        - Student_ID
+        - show Student Name and Course
+       ---------------------
+       Show All Students
+
+    3. Add Course
+        - Course_ID
+        - Course Name
+        - Duration
+        - No of Classes
+        - Total Fee
+        - Teacher
+       ---------------------
+       Update Course
+        - Course_ID
+        - Course Name
+        - Duration
+        - No of Classes
+        - Total Fee
+        - Teacher
+       ---------------------
+       Delete Course
+        - Course_ID
+        - show Course Name
+       ---------------------
+       Show All Course
+
+    4. Payment Statement (Update)
+        - Student_ID search
+        - Student Name
+        - Email Address
+        - Phone Number
+        - Course_ID
+        - Course Selected
+        - Total Fee
+        - Total Fee Paid
+        - Total Fee Outstanding
+        - Current Fee Payment
+       -----------------------
+       Show All payment Statement
+
+    5. Notice Board
+        - Add Notice
+        - Update Notice
+        - Delete Notice
+       -----------------------
+
+2. Teacher
+    1. Update Student
+        - Student_ID
+        - Student Name
+        - Email Address
+        - Phone Number
+        - Age
+        - Gender
+        - Address
+        - Course Selected (not changeable)
+       ---------------------
+       Show Students
+
+    2. Update Attendance
+        - Student_ID
+        - Student Name
+        - Class No
+        - Check Box (Present & Absent)
+
+    3. Add Assignment
+        - Assignment_ID
+        - Assignment Name
+        - upload pdf
+        - submit date & time
+       ---------------------
+
+       Update Assignment
+        - Assignment_ID (search)
+        - Assignment Name
+        - upload pdf
+        - submit date & time
+       ---------------------
+
+       Delete Assignment
+        - Assignment_ID (search)
+        - Assignment Name
+        - Assignment data
+       --------------------
+       Show All Assignments
+
+    4. Assignment Marks
+        - Student_ID
+        - Student Name
+        - Assignment_ID
+        - Assignment Name
+        - Show Answer pdf
+        - Remarks
+        - Assignment Marks (10 points)
+       -----------------------
+
+    5. Final Exam
+        - Exam_ID
+        - upload pdf
+        - submit time
+       -----------------------
+
+    6. Final Exam Marks
+        - Exam_ID
+        - Show Answer pdf
+        - Remarks
+        - Exam Marks (10 points)
+       -----------------------
+
+    7. Notice Board
+        - Add Notice
+        - Update Notice
+        - Delete Notice
+       -----------------------
+
+3. Student
+    1. Course Enrolled
+        - Course_ID
+        - Course Selected
+        - Total Fee
+       -----------------------
+
+    2. Show Performance
+        - Attendance
+        - Assignment Points
+        - Final Exam Result
+       -----------------------
+
+    3. Show Notice
+        - Notice Note
+        - Submitted By
+        - Submitted Date
+       -----------------------
+
+    4. Show Payment Statement
+        - Course_ID
+        - Course Selected
+        - Total Fee
+        - Total Fee Paid
+        - Total Fee Outstanding
+       -----------------------
+
+    5. Assignment
+        - Show Previous Assignments
+        - Submit New Assignment
+       -----------------------
+
+    6. Submit Final Exam Answer
+        - upload pdf
+
