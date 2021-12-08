@@ -155,6 +155,15 @@ canvas.create_text(
     font=("Roboto", 14 * -1)
 )
 
+
+image_image_1 = PhotoImage(
+    file=relative_to_assets("image_add_teacher_form_background.png"))
+image_1 = canvas.create_image(
+    363.0,
+    357.0,
+    image=image_image_1
+)
+
 canvas.create_text(
     121.0,
     134.0,
@@ -253,6 +262,7 @@ canvas.create_text(
     fill="#000000",
     font=("Roboto", 14 * -1)
 )
+
 
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_admin_add_teacher_textbox.png"))
