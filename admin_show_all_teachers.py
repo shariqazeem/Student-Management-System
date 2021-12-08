@@ -1,5 +1,6 @@
 from pathlib import Path
-from tkinter import Tk, Canvas, PhotoImage, Frame, ttk, VERTICAL, HORIZONTAL, BOTTOM, RIGHT, X, Y, BOTH, StringVar, END
+from tkinter import Tk, Canvas, PhotoImage, Frame, ttk, VERTICAL, HORIZONTAL, BOTTOM, RIGHT, X, Y, BOTH, StringVar, END, \
+    Button, messagebox
 import mysql.connector  # pip install mysql-connector-python
 
 import all_credentials
@@ -10,6 +11,15 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
+
+
+def close_window():
+    close = messagebox.askyesno("Update", "Are you sure want to close this window?", parent=window)
+    if close > 0:
+        window.destroy()
+    else:
+        if not close:
+            return
 
 
 # fetch function
@@ -87,7 +97,7 @@ canvas.create_text(
     395.0,
     29.0,
     anchor="nw",
-    text="Remove Teacher",
+    text="All Teachers",
     fill="#000000",
     font=("Roboto", 24 * -1)
 )
@@ -99,6 +109,22 @@ canvas.create_text(
     text="Below is the all teacher data in table",
     fill="#000000",
     font=("Roboto", 14 * -1)
+)
+
+button_image_1 = PhotoImage(
+    file=relative_to_assets("button_close.png"))
+button_1 = Button(
+    image=button_image_1,
+    borderwidth=0,
+    highlightthickness=0,
+    command=close_window,
+    relief="flat"
+)
+button_1.place(
+    x=51.0,
+    y=35.0,
+    width=53.0,
+    height=32.0
 )
 
 image_image_1 = PhotoImage(
