@@ -49,10 +49,6 @@ def validate_all_values():
         add_teacher_to_database()
 
 
-def get_available_courses():
-    pass
-
-
 def add_teacher_to_database():
     try:
         connection = mysql.connector.connect(host=db_host,
@@ -84,20 +80,21 @@ def add_teacher_to_database():
         messagebox.showerror("Error", f"Due To:{str(es)}", parent=window)
 
 
-def fetch_data():
+def fetch_next_teacher_id():
     try:
         connection = mysql.connector.connect(host=db_host,
                                              username=db_username,
                                              password=db_password,
                                              database=db_database)
         cursor = connection.cursor()
-        cursor.execute("select * from " + db_teacher_table)
+        cursor.execute("select teacher_id from " + db_teacher_table)
         data = cursor.fetchall()
         if len(data) != 0:
-            cursor.execute(
-                "select teacher_id from " + db_teacher_table + " where teacher_id=" + str(100000 + len(data)))
-            data = cursor.fetchall()
-            entry_1.insert(0, data[0][0] + 1)
+            teacher_id_tuple = []
+            for d in data:
+                teacher_id_tuple.append(d[0])
+            print()
+            entry_1.insert(0, teacher_id_tuple[len(teacher_id_tuple) - 1] + 1)
         elif len(data) == 0:
             entry_1.insert(0, str(100000 + 1))
         connection.close()
@@ -519,7 +516,7 @@ image_2 = canvas.create_image(
     image=image_image_2
 )
 
-fetch_data()
+fetch_next_teacher_id()
 
 window.resizable(False, False)
 window.mainloop()
