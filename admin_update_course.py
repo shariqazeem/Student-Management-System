@@ -128,7 +128,7 @@ def get_teacher_id(mentor_selected):
 
 def update_course_details(course_id_string):
     try:
-        update = messagebox.askyesno("Update", "Are you sure update this teacher's details", parent=window)
+        update = messagebox.askyesno("Update", "Are you sure update this course's details", parent=window)
         connection = mysql.connector.connect(host=db_host,
                                              username=db_username,
                                              password=db_password,
@@ -174,7 +174,7 @@ def update_course_details(course_id_string):
                 return
         connection.commit()
         connection.close()
-        messagebox.showinfo("Success", "Teacher details successfully updated", parent=window)
+        messagebox.showinfo("Success", "Course details successfully updated", parent=window)
         window.destroy()
     except Exception as es:
         messagebox.showerror("Error", f"Due To:{str(es)}", parent=window)

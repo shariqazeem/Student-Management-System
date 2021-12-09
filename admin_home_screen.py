@@ -31,22 +31,22 @@ def show_all_teacher():
 
 
 def add_course():
-    print("add course")
+    os.system('python admin_add_course.py')
     pass
 
 
 def update_course_data():
-    print("update course")
+    os.system('python admin_update_course.py')
     pass
 
 
 def remove_course():
-    print("remove course")
+    os.system('python admin_remove_course.py')
     pass
 
 
 def show_all_course():
-    print("show all course")
+    os.system('python admin_show_all_courses.py')
     pass
 
 
