@@ -51,32 +51,32 @@ def show_all_course():
 
 
 def add_student():
-    print("add student")
+    os.system('python admin_add_student.py')
     pass
 
 
 def update_student_data():
-    print("update student")
+    os.system('python admin_update_student.py')
     pass
 
 
 def remove_student():
-    print("remove student")
+    os.system('python admin_remove_student.py')
     pass
 
 
 def show_all_student():
-    print("show all student")
+    os.system('python admin_show_all_students.py')
     pass
 
 
 def open_student_payment():
-    print("open student payment")
+    print("payments")
     pass
 
 
 def open_notice_board():
-    print("open notice board")
+    print("open admin_noticeboard.py")
     pass
 
 
