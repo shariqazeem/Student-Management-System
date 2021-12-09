@@ -58,12 +58,11 @@ def add_course():
                                              database=db_database)
         cursor = connection.cursor()
         cursor.execute(
-            "insert into " + db_course_table + " values(%s, %s, %s, %s, %s, %s, %s)",
+            "insert into " + db_course_table + " values(%s, %s, %s, %s, %s, NULL, %s)",
             (course_id.get(),
              course_name.get(),
              course_duration.get(),
              number_of_classes.get(),
-             total_fees.get(),
              total_fees.get(),
              mentor.get()
              ))
