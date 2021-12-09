@@ -508,14 +508,6 @@ course_combo.place(
     height=26.0
 )
 
-image_image_2 = PhotoImage(
-    file=relative_to_assets("drop_down_arrow_right.png"))
-image_2 = canvas.create_image(
-    585.0,
-    400.0,
-    image=image_image_2
-)
-
 fetch_next_teacher_id()
 
 window.resizable(False, False)
